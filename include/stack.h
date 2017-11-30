@@ -51,7 +51,7 @@ TStack<sType>::TStack(const TStack<sType> &s)
 {
 	Size = s.Size;
 	StMem = new sType[Size];
-	for (int i = 0; i < Top + 1; i++)
+	for (int i = 0; i < Top; i++)
 		StMem[i] = s.StMem[i];
 }
 template<class sType>
@@ -59,23 +59,24 @@ void TStack<sType>::Push(const sType &value)
 {
 	if (!IsFull())
 	{
-		StMem[++Top] = value;
+		StMem[Top++] = value;
 	}
 	else
 	{
-		Size *= 1, 5;
+		Size *= 2;
 		sType* temp = new sType[Size];
-		for (int i = 0; i < Top + 1; i++)
+		for (int i = 0; i < Top; i++)
 			temp[i] = StMem[i];
 		delete[] StMem;
 		StMem = temp;
+		StMem[Top++] = value;
 	}
 }
 template<class sType>
 sType TStack<sType>::Pop()
 {
 	if (!IsEmpty())
-		return StMem[Top--];
+		return StMem[--Top];
 	else
 		throw "Stack is EMPTY";
 }
@@ -83,7 +84,7 @@ template<class sType>
 sType TStack<sType>::Peek() const
 {
 	if (!IsEmpty())
-		return StMem[Top];
+		return StMem[Top - 1];
 	else
 		throw "Stack is EMPTY";
 }
@@ -101,6 +102,4 @@ template<class sType>
 void TStack<sType>::Clean()
 {
 	Top = 0;
-	for (int i = 0; i < Size; i++)
-		StMem[i] = 0;
 }
