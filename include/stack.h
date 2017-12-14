@@ -27,6 +27,8 @@ public:
 	bool IsFull() const;
 	bool IsEmpty() const;
 	void Clean();
+	sType Pop();
+	sType Peek();
 
 };
 template<class sType> 
@@ -81,7 +83,7 @@ sType TStack<sType>::Pop()
 		throw "Stack is EMPTY";
 }
 template<class sType>
-sType TStack<sType>::Peek() const
+sType TStack<sType>::Peek()
 {
 	if (!IsEmpty())
 		return StMem[Top - 1];
