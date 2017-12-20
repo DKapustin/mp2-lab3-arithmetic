@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-	string Exp;
+	string EXPR;
 	int p = 1;
 	int a;
 	cout << "CALCULATE\n";
@@ -24,8 +24,8 @@ int main()
 		case 1:
 		{
 			cout << "Enter your expression:\n";
-			cin >> Exp;
-			arithmetic A(Exp);
+			cin >> EXPR;
+			arithmetic A(EXPR);
 			A.Clrspace();
 			A.Minus();
 			A.DIVITION();
