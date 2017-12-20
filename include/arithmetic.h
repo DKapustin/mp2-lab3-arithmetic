@@ -82,8 +82,10 @@ LEXEM*GETPOL() { return PolLex; }
 int GETnPOL() { return nPolLex; }
 void Minus()
 {
+	string ZERO;
+	ZERO = "0";
 	if (EXPR[0] == '-')
-		EXPR = "0" + EXPR;
+		EXPR= ZERO + EXPR;
 	for (int i = 1; i < EXPR.length(); i++)
 		if (EXPR[i - 1] == '(' && EXPR[i] == '-')
 			EXPR.insert(i, "0");
