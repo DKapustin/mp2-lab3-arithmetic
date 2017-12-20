@@ -32,6 +32,14 @@ LEXEM(const LEXEM &t);
 
 LEXEM& operator=(const LEXEM &t);
 
+bool operator==(const LEXEM &t) const
+{
+	bool flag = false;
+	if ((type == t.type) && (Op == t.Op) && (Val == t.Val))
+		flag = true;
+	return flag;
+}
+
 ~LEXEM() {};
 
 };
