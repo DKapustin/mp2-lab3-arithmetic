@@ -8,7 +8,7 @@
 
 using namespace std;
 
-enum LEXEMTYPE {NUMBER, OPERATOR, LBRACKET, RBRACKET, UNKNOWN};
+enum LEXEMTYPE {NUMBER, OPERATOR, LBRACKET, RBRACKET, UNKNOWN,VARIABLE};
 
 const string ALLOP = "(+-*/)";
 
@@ -17,6 +17,7 @@ struct LEXEM
 {
 
 LEXEMTYPE type;
+char Op;
 
 string str;
 double Val;
@@ -25,11 +26,11 @@ LEXEM();
 
 LEXEM(const char c);
 
-LEXEM(const string& str, LEXEMTYPE myType);
+LEXEM(const string& str);
 
 LEXEM(const LEXEM &t);
 
-void operator=(const LEXEM &t);
+LEXEM& operator=(const LEXEM &t);
 
 ~LEXEM() {};
 
@@ -51,16 +52,35 @@ LEXEM*PolLex;
 
 int nPolLex;
 
-void DIVISION();
 
-int CtoPOL(LEXEM* mas);
 
 public:
+	void DIVITION();
+
+	void CtoPOL(); 
+	void Clrspace();							
+	bool Check_Sym() const;					
+	bool Check_Br() const;				
+	bool Check_Op() const;					
+	bool Check();
 
 arithmetic(const string& str);
 
 ~arithmetic() { delete[] pLex; }
-
-void Check();
+double Result(); 
+LEXEM* GetLexems() { return pLex; }
+int GetNLex() { return nLex; }
+LEXEM*GETPOL() { return PolLex; }
+int GETnPOL() { return nPolLex; }
+void Minus()
+{
+	if (EXPR[0] == '-')
+		EXPR = "0" + EXPR;
+	for (int i = 1; i < EXPR.length(); i++)
+		if (EXPR[i - 1] == '(' && EXPR[i] == '-')
+			EXPR.insert(i, "0");
+	delete[] pLex;
+	pLex = new LEXEM[EXPR.length()];
+}
 
 };

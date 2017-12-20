@@ -14,9 +14,9 @@ template<class sType>
 class TStack
 {
 private:
-	int Top; //Номер последнего занятого элемента стека
-	int Size; //Размер стека
-	sType* StMem; //Указатель на первый элемент стека
+	int Top; 
+	int Size; 
+	sType* StMem; 
 public:
 	TStack(int s = 100);
 	TStack(const TStack<sType>&s);
@@ -29,6 +29,7 @@ public:
 	void Clean();
 	sType Pop();
 	sType Peek();
+	TStack & operator=(const TStack &st);
 
 };
 template<class sType> 
@@ -104,4 +105,21 @@ template<class sType>
 void TStack<sType>::Clean()
 {
 	Top = 0;
+}
+template<class sType>
+TStack<sType> & TStack<sType>::operator=(const TStack &st) 
+{
+	if (this != &st)
+	{
+		if (Size != st.Size)
+		{
+			delete[] stMem;
+			stMem = new sType[st.Size];
+		}
+		Size = st.Size;
+		Top = st.Top;
+		for (int i = 0; i<Top; i++)
+			stMem[i] = st.stMem[i];
+	}
+	return *this;
 }
