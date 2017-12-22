@@ -119,7 +119,7 @@
  { 
  	if (EXPR[0] == '-') 
  		EXPR.insert(0, "0"); 
- 	for (int i = 1; i < EXPR.length(); i++) 
+ 	for (unsigned int i = 1; i < EXPR.length(); i++) 
  		if (EXPR[i - 1] == '(' && EXPR[i] == '-') 
  			EXPR.insert(i, "0"); 
  	delete[] pLex; 
