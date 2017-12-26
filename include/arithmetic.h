@@ -13,7 +13,7 @@
  using namespace std; 
  
  
- enum LEXEMTYPE {NUMBER, OPERATOR, LBRACKET, RBRACKET, UNKNOWN,VARIABLE}; 
+ enum LEXEMTYPE {NUMBER, OPERATOR, LBRACKET, RBRACKET, UNKNOWN, VARIABLE}; 
  
  
  const string ALLOP = "(+-*/)"; 

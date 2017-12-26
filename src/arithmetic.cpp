@@ -129,20 +129,6 @@
  				nLex++; 
  				i = j - 1; 
  			} 
- 			else 
- 				if (c >= 97 && c <= 122 || c >= 65 && c <= 90) // переделать
- 				{ 
- 					pLex[nLex] = LEXEM(c); 
- 					nLex++; 
- 				} 
- 				else 
- 					//if (c != ' ') 
- 					{ 
- 						pLex[nLex].type = UNKNOWN; 
- 						nLex++; 
- 					} 
- 
- 
  	} 
 } 
  
@@ -235,7 +221,7 @@
  			cout << "  " << "UNKNOWN SYMBOL" << endl; 
  			flag = false; 
  		} 
- 		if ((pLex[i].type == VARIABLE) && (pLex[i + 1].type == VARIABLE)) 
+ 		if ((pLex[i].type == VARIABLE)) 
  		{ 
  			cout << "UNKNOWN SYMBOL in " << i << endl; 
  			flag = false; 
@@ -249,7 +235,7 @@
  {
 	 bool flag = true;
 
-	 if ((pLex[0].type == NUMBER || pLex[0].type == LBRACKET || pLex[0].type == VARIABLE || pLex[0].Op == '-') && (pLex[nLex - 1].type == NUMBER || pLex[nLex - 1].type == RBRACKET || pLex[nLex - 1].type == VARIABLE))
+	 if ((pLex[0].type == NUMBER || pLex[0].type == LBRACKET || pLex[0].Op == '-') && (pLex[nLex - 1].type == NUMBER || pLex[nLex - 1].type == RBRACKET || pLex[nLex - 1].type == VARIABLE))
 	 {
 		 for (int i = 0; i < (nLex - 1); i++)
 		 {
